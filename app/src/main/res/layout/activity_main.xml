@@ -1,0 +1,504 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+<androidx.constraintlayout.widget.ConstraintLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/leftGuideline"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_begin="20dp" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/rightGuideline"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_end="20dp" />
+
+    <TextView
+        android:id="@+id/heading"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Master"
+        android:textStyle="italic"
+        android:textSize="18sp"
+        android:gravity="center_horizontal"
+        android:layout_marginTop="10dp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent" />
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/dono"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:layout_marginEnd="32dp"
+        app:layout_constraintTop_toBottomOf="@id/heading"
+        app:layout_constraintLeft_toRightOf="@id/leftGuideline"
+        android:hint="Enter Dono"
+        app:layout_constraintWidth_default="percent"
+        app:layout_constraintWidth_percent=".5">
+
+        <!--this is the actual edit text which takes the input-->
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/edit_dono_text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <Button
+        android:id="@+id/dono_fetch"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_marginTop="22dp"
+        android:layout_marginLeft="15dp"
+        android:text="OK"
+        app:layout_constraintTop_toBottomOf="@id/heading"
+        app:layout_constraintLeft_toRightOf="@+id/dono"
+        app:layout_constraintRight_toLeftOf="@id/rightGuideline"
+        android:hint="Voc Date"
+        app:layout_constraintWidth_default="percent"
+        app:layout_constraintWidth_percent=".3"/>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/vocno"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:layout_marginEnd="32dp"
+        app:layout_constraintTop_toBottomOf="@id/dono"
+        app:layout_constraintLeft_toRightOf="@id/leftGuideline"
+        android:hint="Voc No"
+        app:layout_constraintWidth_default="percent"
+        app:layout_constraintWidth_percent=".43">
+
+        <!--this is the actual edit text which takes the input-->
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/edit_vocno_text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:enabled="false" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/vocDate"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        app:layout_constraintTop_toBottomOf="@id/dono"
+        app:layout_constraintLeft_toRightOf="@+id/vocno"
+        app:layout_constraintRight_toLeftOf="@id/rightGuideline"
+        android:hint="Voc Date"
+        app:layout_constraintWidth_default="percent"
+        app:layout_constraintWidth_percent=".43">
+
+        <!--this is the actual edit text which takes the input-->
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/edit_voc_date_text"
+            android:singleLine="true"
+            android:enabled="false"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/party"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        app:layout_constraintTop_toBottomOf="@id/vocno"
+        app:layout_constraintLeft_toRightOf="@id/leftGuideline"
+        app:layout_constraintRight_toLeftOf="@id/rightGuideline"
+        android:hint="Party">
+
+        <!--this is the actual edit text which takes the input-->
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/edit_party_text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:enabled="false" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/transport"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        app:layout_constraintTop_toBottomOf="@id/party"
+        app:layout_constraintLeft_toRightOf="@id/leftGuideline"
+        app:layout_constraintRight_toLeftOf="@id/rightGuideline"
+        android:hint="Transport">
+
+        <!--this is the actual edit text which takes the input-->
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/edit_transport_text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:enabled="false" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/truckNo"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:layout_marginEnd="32dp"
+        app:layout_constraintTop_toBottomOf="@id/transport"
+        app:layout_constraintLeft_toRightOf="@id/leftGuideline"
+        android:hint="Truck No"
+        app:layout_constraintWidth_default="percent"
+        app:layout_constraintWidth_percent=".43">
+
+        <!--this is the actual edit text which takes the input-->
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/edit_truck_no_text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:enabled="false" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/gateEntry"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        app:layout_constraintTop_toBottomOf="@id/transport"
+        app:layout_constraintLeft_toRightOf="@+id/vocno"
+        app:layout_constraintRight_toLeftOf="@id/rightGuideline"
+        android:hint="Gate Entry"
+        app:layout_constraintWidth_default="percent"
+        app:layout_constraintWidth_percent=".43">
+
+        <!--this is the actual edit text which takes the input-->
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/edit_gate_entry_text"
+            android:singleLine="true"
+            android:enabled="false"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/item"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        app:layout_constraintTop_toBottomOf="@id/truckNo"
+        app:layout_constraintLeft_toRightOf="@id/leftGuideline"
+        app:layout_constraintRight_toLeftOf="@id/rightGuideline"
+        android:hint="Item">
+
+        <!--this is the actual edit text which takes the input-->
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/edit_item_text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:enabled="false" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <Spinner
+        android:id="@+id/spinner"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:spinnerMode="dropdown"
+        app:layout_constraintTop_toBottomOf="@id/truckNo"
+        app:layout_constraintLeft_toRightOf="@id/leftGuideline"
+        app:layout_constraintRight_toLeftOf="@id/rightGuideline"
+        android:layout_marginTop="25dp" />
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/grade"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        app:layout_constraintTop_toBottomOf="@id/item"
+        app:layout_constraintLeft_toRightOf="@id/leftGuideline"
+        android:hint="Grade"
+        app:layout_constraintWidth_default="percent"
+        app:layout_constraintWidth_percent=".43">
+
+        <!--this is the actual edit text which takes the input-->
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/edit_grade_text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:enabled="false" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/length"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        app:layout_constraintTop_toBottomOf="@id/item"
+        app:layout_constraintLeft_toRightOf="@+id/reqwt"
+        app:layout_constraintRight_toLeftOf="@id/rightGuideline"
+        android:hint="Length"
+        app:layout_constraintWidth_default="percent"
+        app:layout_constraintWidth_percent=".43">
+
+        <!--this is the actual edit text which takes the input-->
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/edit_length_text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:enabled="false" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/reqwt"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        app:layout_constraintTop_toBottomOf="@id/grade"
+        app:layout_constraintLeft_toRightOf="@id/leftGuideline"
+        android:hint="Req Wt"
+        app:layout_constraintWidth_default="percent"
+        app:layout_constraintWidth_percent=".43">
+
+        <!--this is the actual edit text which takes the input-->
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/edit_req_wt_text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:enabled="false" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/scan_wt"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        app:layout_constraintTop_toBottomOf="@id/grade"
+        app:layout_constraintLeft_toRightOf="@+id/reqwt"
+        app:layout_constraintRight_toLeftOf="@id/rightGuideline"
+        android:hint="Scan Wt"
+        app:layout_constraintWidth_default="percent"
+        app:layout_constraintWidth_percent=".43">
+
+        <!--this is the actual edit text which takes the input-->
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/edit_scan_wt_text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:enabled="false" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <TextView
+        android:id="@+id/headingBarcode"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Barcode Scanner Details"
+        android:textStyle="italic"
+        android:textSize="18sp"
+        android:gravity="center_horizontal"
+        android:layout_marginTop="20dp"
+        app:layout_constraintTop_toBottomOf="@id/reqwt"
+        app:layout_constraintLeft_toLeftOf="parent" />
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/barcode_no"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        app:layout_constraintTop_toBottomOf="@id/headingBarcode"
+        app:layout_constraintLeft_toRightOf="@id/leftGuideline"
+        app:layout_constraintRight_toLeftOf="@id/rightGuideline"
+        android:hint="Barcode No">
+
+        <!--this is the actual edit text which takes the input-->
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/edit_barcode_no"
+            android:enabled="true"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <Button
+        android:id="@+id/scan_button"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:onClick="ScanButton"
+        android:text="SCAN"
+        app:layout_constraintTop_toBottomOf="@id/barcode_no"
+        app:layout_constraintLeft_toRightOf="@id/leftGuideline"
+        app:layout_constraintWidth_default="percent"
+        app:layout_constraintWidth_percent=".4"/>
+
+    <Button
+        android:id="@+id/fetch_button"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="FETCH"
+        android:onClick="FetchButton"
+        android:layout_margin="10dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="4dp"
+        app:layout_constraintTop_toBottomOf="@id/barcode_no"
+        app:layout_constraintLeft_toRightOf="@id/scan_button"
+        app:layout_constraintHorizontal_chainStyle="spread"
+        app:layout_constraintWidth_default="percent"
+        app:layout_constraintWidth_percent=".4"/>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/barcode_weight"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        app:layout_constraintTop_toBottomOf="@id/fetch_button"
+        app:layout_constraintLeft_toRightOf="@id/leftGuideline"
+        android:hint="Weight"
+        app:layout_constraintWidth_default="percent"
+        app:layout_constraintWidth_percent=".43">
+
+        <!--this is the actual edit text which takes the input-->
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/edit_barcode_weight"
+            android:enabled="false"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/quantity"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        app:layout_constraintTop_toBottomOf="@id/fetch_button"
+        app:layout_constraintLeft_toRightOf="@+id/barcode_weight"
+        app:layout_constraintRight_toLeftOf="@id/rightGuideline"
+        android:hint="Enter Quantity"
+        app:layout_constraintWidth_default="percent"
+        app:layout_constraintWidth_percent=".43">
+
+        <!--this is the actual edit text which takes the input-->
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/edit_barcode_quantity"
+            android:singleLine="true"
+            android:inputType="number"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <Button
+        android:id="@+id/add_button"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:onClick="AddTableDataButton"
+        android:text="ADD ITEM"
+        app:layout_constraintLeft_toRightOf="@id/leftGuideline"
+        app:layout_constraintRight_toLeftOf="@id/rightGuideline"
+        app:layout_constraintTop_toBottomOf="@id/barcode_weight"
+        app:layout_constraintWidth_default="percent"
+        app:layout_constraintWidth_percent=".4" />
+
+    <TableLayout
+        android:id="@+id/tableInvoices"
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="10dp"
+        app:layout_constraintTop_toBottomOf="@id/add_button"
+        android:paddingLeft="5dp"
+        android:visibility="gone"
+        android:paddingRight="5dp">
+
+        <TextView
+            android:id="@+id/txt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="List Of Items added using Barcode:"
+            android:textSize = "20dp"
+            android:textStyle="bold">
+        </TextView>
+
+
+        <TableRow android:background="#51B435" android:padding="10dp">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center_horizontal"
+                android:text="Sr No" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="4"
+                android:gravity="center_horizontal"
+                android:text="Barcode" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center_horizontal"
+                android:text="Weight" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center_horizontal"
+                android:text="Quantity" />
+        </TableRow>
+
+    </TableLayout>
+
+    <Button
+        android:id="@+id/submit_sales_order"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="20dp"
+        android:layout_marginTop="20dp"
+        android:onClick="SubmitFinalSalesOrder"
+        android:text="SUBMIT SALES ORFER"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tableInvoices"
+        app:layout_constraintWidth_default="percent"
+        app:layout_constraintWidth_percent=".4"
+        android:visibility="invisible"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
+
+</ScrollView>
