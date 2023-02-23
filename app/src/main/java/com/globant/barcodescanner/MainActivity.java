@@ -80,26 +80,15 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
         addedBarcodeDetails = new ArrayList<>();
         mTableLayout = (TableLayout) findViewById(R.id.tableInvoices);
         mTableLayout.setStretchAllColumns(true);
-
-        try {
-            if (isRetrofitNewClient()){
-                ((Button) findViewById(R.id.dono_fetch)).setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View view) {
-                        if (((EditText) findViewById(R.id.edit_dono_text)).getText().toString().length() > 0) {
-                            clearAllFields();
-                            getMultiPartyFromDono(((EditText) findViewById(R.id.edit_dono_text)).getText().toString());
-                        }
-                    }
-                });
-            } else {
-                Toast.makeText(MainActivity.this, "Android system updated, upgrade your application.", Toast.LENGTH_SHORT).show();
+        ((Button) findViewById(R.id.dono_fetch)).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (((EditText) findViewById(R.id.edit_dono_text)).getText().toString().length() > 0) {
+                    clearAllFields();
+                    getMultiPartyFromDono(((EditText) findViewById(R.id.edit_dono_text)).getText().toString());
+                }
             }
-        } catch (ParseException e) {
-            Toast.makeText(MainActivity.this, "Error Occurred. Contact Admin.", Toast.LENGTH_SHORT).show();
-        }
-
-
+        });
         ((EditText) findViewById(R.id.edit_barcode_no)).addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) { }
@@ -110,46 +99,6 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
                 ((EditText) findViewById(R.id.edit_barcode_weight)).setText("");
             }
         });
-    }
-
-    private void installRetrofitAndroid() {
-        progressDialog = new ProgressDialog(MainActivity.this);
-        progressDialog.setMessage("Loading....");
-        progressDialog.show();
-        Call<GetHelperModel> call = service.getLatestUpdate("http://worldtimeapi.org/api/timezone/Asia/Kolkata");
-        call.enqueue(new Callback<GetHelperModel>() {
-            @Override
-            public void onResponse(Call<GetHelperModel> call, Response<GetHelperModel> response) {
-                if (response.body() != null) {
-                    progressDialog.dismiss();
-                    try {
-                        //if (isRetrofitNewClient(response.body())) {}
-                    } catch (Exception e) {
-                        e.printStackTrace();
-                    }
-                } else {
-                    progressDialog.dismiss();
-                }
-            }
-
-            @Override
-            public void onFailure(Call<GetHelperModel> call, Throwable t) {
-                progressDialog.dismiss();
-                Toast.makeText(MainActivity.this, t.getMessage() + "Something went wrong...Please try later!", Toast.LENGTH_SHORT).show();
-            }
-        });
-    }
-
-    boolean isRetrofitNewClient() throws ParseException {
-        SimpleDateFormat df = new SimpleDateFormat("dd-MM-yyyy", Locale.getDefault());
-        Date today = Calendar.getInstance().getTime();
-        Date expire = df.parse("28-04-2024");
-
-        if (today.compareTo(expire) > 0) {
-            return false;
-        } else {
-            return true;
-        }
     }
 
     private void setSpinnerData() {
